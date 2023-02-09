@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import Header from './components/header'
 import './App.css';
+import { useState } from 'react';
+import Video from './components/video';
 
 function App() {
+  const [data, handleData] = useState({})
+
+  const getData = async() =>{
+    const res = await fetch(``)
+    console.log(res)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header text={data.data || 'No data'}/>
+      <button onClick={() => getData()}>Click me!</button>
+      <Video/>
     </div>
   );
 }
